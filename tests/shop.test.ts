@@ -7,7 +7,7 @@ interface Product {
     amount: number;
 }
 
-test.only('Buy products and verify prices', async ({ page }) => {
+test('Buy products and verify prices', async ({ page }) => {
     const utils = new Utils(page);
     const products: Product[] = [
         { name: 'Stuffed Frog', price: 10.99, amount: 2 },
