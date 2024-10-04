@@ -7,7 +7,6 @@ interface Product {
     amount: number;
 }
 
-
 test('Buy products and verify prices', async ({ page }) => {
     const utils = new Utils(page);
     const products: Product[] = [
