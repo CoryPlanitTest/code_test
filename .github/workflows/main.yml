@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
 
@@ -28,8 +28,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install
 
-      - name: Set permissions for Playwright
-        run: chmod +x node_modules/.bin/playwright
+      - name: Install Playwright globally
+        run: npm install -g playwright
 
       - name: Run tests
-        run: npx playwright test
+        run: npm test
