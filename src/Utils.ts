@@ -86,13 +86,10 @@ export class Utils {
             const singleItemPrice = parseFloat(priceText?.substring(1) || "0");
             const priceText2 = await this.page.locator(Locators.totalOfToys(product.name)).textContent();
             const totalItemCost = parseFloat(priceText2?.substring(1) || "0");
-            console.log("1: " + priceText);
-            console.log("2: " + priceText2);
             totalPrice = totalPrice + totalItemCost;
             expect(singleItemPrice).toEqual(product.price);
             expect(totalItemCost).toEqual(parseFloat((product.price*product.amount).toFixed(2)));
         }
-        console.log("Total: " + totalPrice);
         await expect(this.page.locator(Locators.totalOfAllToys(totalPrice.toString()))).toBeVisible();
     }
 }

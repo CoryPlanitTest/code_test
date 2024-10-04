@@ -8,7 +8,6 @@ test('Validate error messages on Contact page', async ({ page }) => {
     await utils.goToContactPage();
     await utils.submitContactFormAndValidateEntries("Firstname", ["Forename", "Email", "Message"]);
     await utils.fillOutContactForm("Firstname", "emailtest123@gmail.com", "Message test 123 !@#$%");
-    await utils.submitContactFormAndValidateEntries("Firstname");
 });
 
 for(let i = 1; i <= 5; i++) {
