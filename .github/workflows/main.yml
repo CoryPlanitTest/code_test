@@ -7,11 +7,11 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # Change the runner version
 
     steps:
       - name: Check out code
@@ -20,15 +20,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '16'  # or '18' or whichever version you're using
 
       - name: Install dependencies
-        run: sudo npm install
-      - name: Install Playwright Browsers
-        run: sudo npx playwright install
+        run: npm ci  # Use npm ci for a clean install
 
-      - name: Check Playwright Version
-        run: sudo npx playwright --version
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      - name: Check permissions
+        run: ls -la node_modules/.bin  # Check permissions of binaries
+
+      - name: Check Playwright Binary
+        run: ls -la node_modules/.bin/playwright  # Check specific permissions
 
       - name: Run tests
-        run: sudo npx playwright test
+        run: npx playwright test
