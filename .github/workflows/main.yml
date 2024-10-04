@@ -31,5 +31,8 @@ jobs:
       - name: Install Playwright globally
         run: npm install -g playwright
 
+      - name: Check permissions
+        run: ls -l node_modules/.bin/
+
       - name: Run tests
         run: npm test
